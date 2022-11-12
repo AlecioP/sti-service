@@ -6,8 +6,8 @@
 	<parent>
 		<groupId>edu.mayo.cts2.framework</groupId>
 		<artifactId>cts2-base-service-plugin</artifactId>
-		<version>1.2.0.FINAL</version>
-		<relativePath>../cts2-framework-1.2.0.FINAL/cts2-base-service-plugin/pom.xml</relativePath>
+		<version>SNAPSHOT</version>
+		<relativePath>../cts2-framework/cts2-base-service-plugin/pom.xml</relativePath>
 	</parent>
 
 	<groupId>it.linksmt.cts2.plugin</groupId>
@@ -20,8 +20,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sti.cts2.framework.version>1.2.0.FINAL</sti.cts2.framework.version>
-		<sti.cts2.spring.version>3.2.3.RELEASE</sti.cts2.spring.version>
+		<!--<sti.cts2.framework.version>SNAPSHOT</sti.cts2.framework.version>-->
+		<!-- <sti.cts2.spring.version>3.2.3.RELEASE</sti.cts2.spring.version> -->
 		<sti.cts2.hibernate.version>4.1.9.Final</sti.cts2.hibernate.version>
 	</properties>
 
@@ -31,22 +31,22 @@
 		<dependency>
 			<groupId>edu.mayo.cts2.framework</groupId>
 			<artifactId>cts2-service</artifactId>
-			<version>${sti.cts2.framework.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.mayo.cts2.framework</groupId>
 			<artifactId>cts2-core</artifactId>
-			<version>${sti.cts2.framework.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.mayo.cts2.framework</groupId>
 			<artifactId>cts2-plugin-util</artifactId>
-			<version>${sti.cts2.framework.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.mayo.cts2.framework</groupId>
 			<artifactId>cts2-webapp-rest-extensions</artifactId>
-			<version>${sti.cts2.framework.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 
 		<!-- HIBERNATE -->
@@ -69,7 +69,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.3-1102-jdbc41</version>
+			<version>42.2.26</version>
 		</dependency>
 
 		<dependency>
@@ -88,16 +88,10 @@
 
 		<!-- Utility -->
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-1.2-api</artifactId>
+			<version>2.19.0</version>
 		</dependency>
-
-		<!-- <dependency> -->
-		<!-- <groupId>com.jayway.jsonpath</groupId> -->
-		<!-- <artifactId>json-path</artifactId> -->
-		<!-- <version>2.4.0</version> -->
-		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.json</groupId>
@@ -114,14 +108,15 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.10.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>11</source>
+					<target>11</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 					<fork>true</fork>
 					<meminitial>128m</meminitial>
 					<maxmem>512m</maxmem>
+					<useIncrementalCompilation>false</useIncrementalCompilation>
 				</configuration>
 			</plugin>
 
