@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!--<sti.cts2.framework.version>SNAPSHOT</sti.cts2.framework.version>-->
 		<!-- <sti.cts2.spring.version>3.2.3.RELEASE</sti.cts2.spring.version> -->
-		<sti.cts2.hibernate.version>4.1.9.Final</sti.cts2.hibernate.version>
+		<sti.cts2.hibernate.version>5.4.24.Final</sti.cts2.hibernate.version>
 	</properties>
 
 	<dependencies>
