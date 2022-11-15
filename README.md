@@ -22,17 +22,17 @@ Questo repository contiene il modulo parent sti-cts2-portlets-build e i seguenti
 Prima di procedere al download dei sorgenti per il corretto funzionamento occorre installare le seguenti.
 Per l'installazione degli applicativi si demanda alla documentazione ufficiale
 
-- SO AlmaLinuxOS [https://almalinux.org/it/]
+- [SO AlmaLinuxOS](https://almalinux.org/it/)
 
-- JDK 1.8 [https://www.oracle.com/it/java/technologies/javase/javase8-archive-downloads.html]
+- [JDK 1.8](https://www.oracle.com/it/java/technologies/javase/javase8-archive-downloads.html)
 
-- Maven 3.6.3 [https://maven.apache.org/docs/3.6.3/release-notes.html] 
+- [Maven 3.6.3](https://maven.apache.org/docs/3.6.3/release-notes.html)
 
-- Postgres 9.6 [https://www.postgresql.org/ftp/source/]
+- [Postgres 9.6](https://www.postgresql.org/ftp/source/)
 
-- solr-6.3.0 [https://archive.apache.org/dist/lucene/solr/]
+- [solr-6.3.0](https://archive.apache.org/dist/lucene/solr/)
 
-- sti-cts2-framework [https://github.com/iit-rende/sti-cts2-framework] 
+- [sti-cts2-framework](https://github.com/iit-rende/sti-cts2-framework)
 
   
 
@@ -101,7 +101,7 @@ Le definizioni degli indici vanno copiate dentro solr (in servizio non deve esse
 Successivamente bisogna editare il file "**solr-6.3.0/bin/solr.in.sh**" definendo le proprietà "sti.index.location.**NOME_INDICE**" utilizzate nei file ../solrconfig.xml dei rispettivi indici per indicare la cartella di destinazione dei dati. Di seguito un esempio di configurazione
 
 
-
+```shell
 SOLR_OPTS="$SOLR_OPTS -Dsti.index.location.loinc=/PATH/INDICI_SOLR/SOLR_IDX/LOINC_IDX"
 
 SOLR_OPTS="$SOLR_OPTS -Dsti.index.location.icd9cm=/PATH/INDICI_SOLR/SOLR_IDX/ICD9CM_IDX"
@@ -115,7 +115,7 @@ SOLR_OPTS="$SOLR_OPTS -Dsti.index.location.standard_local=/PATH/INDICI_SOLR/SOLR
 SOLR_OPTS="$SOLR_OPTS -Dsti.index.location.valueset=/PATH/INDICI_SOLR/SOLR_IDX/VALUESET_IDX"
 
 SOLR_OPTS="$SOLR_OPTS -Ddisable.configEdit=true"
-
+```
 
 
 Di seguito un esempio di come vengono usate le prop precedentemente definite. I codice fa riferimento alla definizione dell'idice per i valueset presente sotto **..\sti-service\extra\solr\solr_conf\sti_valueset_conf\solrconfig.xml**
@@ -138,21 +138,14 @@ Il download del DB e degli indici SOLR aggiornati con tutte le codifiche **sarà
 
 A questo punto si può avviare Solr:
 
-```
+```shell
 /PATH_SOLR/solr-6.3.0/bin/solr stop
 /PATH_SOLR/solr-6.3.0/bin/solr start
 ```
 
-
-
 Se tutto è andato bene dovremo accedere alla console di solr all'indirizzo (http://HOST:8983/solr/) e verificare che gli indici siano presenti.
 
 ![solr](screenshot/solr.png)
-
-
-
-
-
 
 ## Build
 Per la build del modulo è necessario scaricare e installare - Maven 3.6.3 [https://maven.apache.org/docs/3.6.3/release-notes.html] o superiore
@@ -166,8 +159,6 @@ cd sti-service
 mvn clean install
 ```
 
-
-
 ## Deploy
 
 Una volta eseguita la build dei moduli verrà prodotto un jar da caricare nella console web di cts2.
@@ -176,33 +167,19 @@ Se l'ambiente è correttamente configurato ed è stato effettuato il deployment 
 
 N.B. in caso di conferma spuntare "Start Bundle"
 
-
-
 Accesso alla console
 
 ![home](screenshot/home.png)
-
-
-
-
-
-
 
 Caricamento plugin
 
 ![caricamento](screenshot/caricamento.png)
 
-
-
 Conferma
 
 ![conferma](screenshot/conferma.png)
 
-
-
 Per ulteriori approfondimenti si rimanda alla documentazione di cts2 framework
-
-
 
 ## Copyright ©
 
