@@ -118,13 +118,9 @@ SOLR_OPTS="$SOLR_OPTS -Ddisable.configEdit=true"
 ```
 
 
-Di seguito un esempio di come vengono usate le prop precedentemente definite. I codice fa riferimento alla definizione dell'idice per i valueset presente sotto **..\sti-service\extra\solr\solr_conf\sti_valueset_conf\solrconfig.xml**
+Di seguito un esempio di come vengono usate le prop precedentemente definite. 
 
-
-
-![image-20210909182654185](screenshot/config_index.png)
-
-
+https://github.com/AlecioP/sti-service/blob/ed83fea8e52bec4aed326ac24124adcc88262645/extra/solr/solr_conf/sti_valueset_conf/solrconfig.xml#L1-L26
 
 Dalla URL http://cosenza.iit.cnr.it/repo/sti/dati_base/INDEX_SOLR_DATI_BASE.zip è presente un dump degli indici contenente i dati delle codifiche di base (**LOINC; ATC; AIC; ICD9-CM**) relativo al dump del DB  http://cosenza.iit.cnr.it/repo/sti/dati_base/dump_dati_base.zip. Quindi i caso di caricamento del DB con i dati di base bisogna prendere anche gli indici SOLR contenenti i dati in modo che all'avvio dell'applicazione sia tutto correttamente funzionante.
 
