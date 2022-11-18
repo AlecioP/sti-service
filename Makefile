@@ -97,9 +97,9 @@ n-step1:
 			rem_pre=$${core#sti_} && \
 			rem_suf=$${rem_pre%_conf/} && \
 			core_name=$${rem_suf^^} && \
-			echo "Creating new core named $$core_name" && \
+			echo "Creating new core named $${core_name}_IDX" && \
 			(ls "/var/solr/data/$$core_name" 2>/dev/null && echo "Core already exists" && echo "") || \
-			(echo "No core in SOLR_HOME. Proceeding to creation" && $(CORE_CREATE_PATH) create_core -c $$core_name) \
+			(echo "No core in SOLR_HOME. Proceeding to creation" && $(CORE_CREATE_PATH) create_core -c $${core_name}_IDX) \
 		; done'
 #	sudo service solr stop
 
@@ -121,15 +121,17 @@ n-step2:
 			rem_pre=$${core#sti_} && \
 			rem_suf=$${rem_pre%_conf/} && \
 			core_name=$${rem_suf^^} && \
-			echo "Changing conf/ and data/ for core $$core_name" && \
-			echo "Deleting $(SOLR_DATA_DIR)/$${core_name}/conf/" && \
-			rm -r $(SOLR_DATA_DIR)/$${core_name}/conf/ && \
-			echo "Copying $${core}. in $(SOLR_DATA_DIR)/$${core_name}/conf/" && \
-			cp -a $${core}. $(SOLR_DATA_DIR)/$${core_name}/conf/ && \
-			echo "Deleting $(SOLR_DATA_DIR)/$${core_name}/data/" && \
-			rm -r $(SOLR_DATA_DIR)/$${core_name}/data/ && \
-			echo "Copying ./extract/$(DATA_FILE:.zip=)/$${core_name}_IDX/. in $(SOLR_DATA_DIR)/$${core_name}/data/" && \
-			cp -a ./extract/$(DATA_FILE:.zip=)/$${core_name}_IDX/. $(SOLR_DATA_DIR)/$${core_name}/data/ && \
+			echo "Changing conf/ and data/ for core $${core_name}_IDX" && \
+			echo "Deleting $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/" && \
+			rm -r $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/ && \
+			echo "Copying $${core}. in $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/" && \
+			cp -a $${core}. $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/ && \
+			echo "Deleting $(SOLR_DATA_DIR)/$${core_name}_IDX/data/" && \
+			rm -r $(SOLR_DATA_DIR)/$${core_name}_IDX/data/ && \
+			echo "Copying ./extract/$(DATA_FILE:.zip=)/$${core_name}_IDX/. in $(SOLR_DATA_DIR)/$${core_name}_IDX/data/" && \
+			cp -a ./extract/$(DATA_FILE:.zip=)/$${core_name}_IDX/. $(SOLR_DATA_DIR)/$${core_name}_IDX/data/ && \
+			echo "Rename $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/schema.xml to $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/managed-schema.xml" && \
+			mv $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/schema.xml $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/managed-schema.xml && \
 			echo "" \
 		; done'
 
