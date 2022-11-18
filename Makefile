@@ -130,8 +130,6 @@ n-step2:
 			rm -r $(SOLR_DATA_DIR)/$${core_name}_IDX/data/ && \
 			echo "Copying ./extract/$(DATA_FILE:.zip=)/$${core_name}_IDX/. in $(SOLR_DATA_DIR)/$${core_name}_IDX/data/" && \
 			cp -a ./extract/$(DATA_FILE:.zip=)/$${core_name}_IDX/. $(SOLR_DATA_DIR)/$${core_name}_IDX/data/ && \
-			echo "Rename $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/schema.xml to $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/managed-schema.xml" && \
-			mv $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/schema.xml $(SOLR_DATA_DIR)/$${core_name}_IDX/conf/managed-schema.xml && \
 			echo "" \
 		; done'
 

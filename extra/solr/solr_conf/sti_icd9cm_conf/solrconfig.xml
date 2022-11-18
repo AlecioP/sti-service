@@ -6,6 +6,7 @@
 
   <!-- <lib/> directives can be used to instruct Solr to load any Jars
        identified and use them -->
+  <!--
   <lib dir="${solr.install.dir:../../../..}/contrib/extraction/lib" regex=".*\.jar" />
   <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-cell-\d.*\.jar" />
 
@@ -17,13 +18,16 @@
 
   <lib dir="${solr.install.dir:../../../..}/contrib/velocity/lib" regex=".*\.jar" />
   <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-velocity-\d.*\.jar" />
-  
+  -->
+
   <!-- Filtri e analizzatori custom per STI -->
   <lib dir="${solr.install.dir:../../../..}/sti-extra" regex=".*\.jar" />
   
   <!-- Data Directory -->
+  <!--
   <dataDir>${sti.index.location.icd9cm}</dataDir>
-
+  -->
+  
   <directoryFactory name="DirectoryFactory" 
                     class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}"/>
 
