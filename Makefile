@@ -36,7 +36,17 @@ DATA_FILE=INDEX_SOLR_DATI_BASE.zip
 REMOTE_DATA=$(CORE_DATA_ORIGIN:/=)/$(DATA_FILE)
 EXTRACTED_DIR=$(SOLR_DATA_DIR)/$(DATA_FILE:.zip=)
 
-all: import
+all: import sti-plugin
+
+# The directory monitored by cts2 framework to load and install bundles is defined in 
+# ./cts2-framework/cts2-core/src/main/java/edu/mayo/cts2/framework/core/config/ConfigInitializer.java [line 85 to 95]
+# fileinstall directory is $HOME/.cts2/plugins
+# Accordingly to OSGI guide lines bundle is also cached in $HOME/.cts2/cts2framework/.osgi-felix-cache/bundle<num>/
+sti-plugin:
+	mvn clean install
+	sudo cp target/sti-service-1.0.jar /opt/tomcat/.cts2/plugins/
+	sudo chown tomcat: /opt/tomcat/.cts2/plugins/sti-service-1.0.jar
+	sudo systemctl restart tomcat
 
 import: new-method #in-step1 in-step2 in-step3
 
