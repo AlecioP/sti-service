@@ -97,7 +97,7 @@ new-method: n-step1 n-step2
 
 n-step1:
 #	sudo service solr start
-	su tomcat -c "mkdir ~/tmp/ 2>/dev/null || rm -r ~/tmp/ && echo 'Removing and recreating ~/tmp/' && mkdir ~/tmp/"
+	su tomcat -c "mkdir ~/tmp/ 2>/dev/null || (rm -r ~/tmp/ && echo 'Removing and recreating ~/tmp/' && mkdir ~/tmp/)"
 	for dir in ./extra/solr/solr_conf/sti_*_conf/ ; do sudo cp -r $$dir /opt/tomcat/tmp/ ; done
 	sudo chown -R tomcat: /opt/tomcat/tmp/
 #	Using single quotes for external -c argument prevents core variable to be expanded from father shell
@@ -108,7 +108,7 @@ n-step1:
 			rem_suf=$${rem_pre%_conf/} && \
 			core_name=$${rem_suf^^} && \
 			echo "Creating new core named $${core_name}_IDX" && \
-			(ls "/var/solr/data/$$core_name" 2>/dev/null && echo "Core already exists" && echo "") || \
+			(ls "/var/solr/data/$${core_name}_IDX" 2>/dev/null && echo "Core already exists" && echo "") || \
 			(echo "No core in SOLR_HOME. Proceeding to creation" && $(CORE_CREATE_PATH) create_core -c $${core_name}_IDX) \
 		; done'
 #	sudo service solr stop
